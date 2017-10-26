@@ -1,0 +1,28 @@
+/* _mixins.scss */
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+  }
+
+  @mixin linear-gradient($location, $fromColor, $toColor) {
+    background-image: -o-linear-gradient($location, $fromColor, $toColor);
+    background-image: -moz-linear-gradient($location, $fromColor, $toColor);
+    background-image: -webkit-linear-gradient($location, $fromColor, $toColor);
+    background-image: -ms-linear-gradient($location, $fromColor, $toColor);
+    background-image: linear-gradient(to $location, $fromColor, $toColor);
+  }
+
+  @mixin box-shadow($h_shadow, $v_shadow, $blur, $color, $option) {
+    -moz-box-shadow: $h_shadow $v_shadow $blur $color $option;
+    -webkit-box-shadow: $h_shadow $v_shadow $blur $color $option;
+    box-shadow: $h_shadow $v_shadow $blur $color $option;
+  }
+
+  @mixin custom-box-shadow($shadow1, $shadow2, $option) {
+    -moz-box-shadow: $shadow1, $shadow2 $option;
+    -webkit-box-shadow: $shadow1, $shadow2 $option;
+    box-shadow: $shadow1, $shadow2 $option;
+  }

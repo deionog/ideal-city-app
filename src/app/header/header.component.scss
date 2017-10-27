@@ -1,0 +1,105 @@
+/* _header.scss */
+
+@import '~sass/mixins';
+@import '~sass/variables';
+
+.navbar-header{
+  height: 60px;
+  border-bottom: 1px solid #E6EAEA
+}
+
+.logo {
+    padding: $logoPadding;
+    width: 150px;
+}
+
+.box-left{
+  float: left;
+}
+
+.box-right{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+  .navbar-default {
+    background: none;
+    border: none;
+    margin-bottom: 0;
+  }
+
+  .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border: none;
+  }
+
+  .navbar-default .navbar-nav>li>a {
+    color: $navFontColor;
+    font-variant: $navFontStyle;
+    font-size: $navFontSize;
+  }
+
+  .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: $lightGrey;
+  }
+
+  .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+    background-color: $white;
+  }
+
+  .navbar-right {
+    padding: $rightNavBarPadding;
+  }
+
+  .nav {
+    margin-bottom: $navBottom;
+  }
+
+  .nav-tabs {
+    border-bottom: none;
+  }
+
+  .nav-pills>li>a:after {
+    padding-left: 30px;
+    color: $white;
+  }
+
+  .nav-pills>li>a {
+    color: $white;
+    font-variant: $navFontStyle;
+    font-size: $navFontSize;
+  }
+
+  .nav-pills>li>a:hover {
+    border-color: $orangeColor $orangeColor $lightGrey;
+    color: $orangeColor;
+    background: none;
+  }
+
+  nav #login-content {
+    top: 24px;
+    right: 0;
+    z-index: 999;
+    background: #fff;
+    background-image: -webkit-gradient(linear, left top, left bottom, from($white), to($lightGrey));
+    @include linear-gradient(top, $white, $lightGrey);
+    padding: 15px;
+    @include border-radius(3px 0 3px 3px);
+  }
+
+  nav #signup-content {
+    top: 24px;
+    right: 0;
+    z-index: 999;
+    background: #fff;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
+    @include linear-gradient(top, $white, $lightGrey);
+    padding: 15px;
+    @include border-radius(3px 0 3px 3px);
+  }

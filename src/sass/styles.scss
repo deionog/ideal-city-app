@@ -1,3 +1,10 @@
 @import './_variables';
 @import './_mixins.scss';
 @import './_reset.scss';
+@import
+'~bootstrap/scss/functions',
+'~bootstrap/scss/variables',
+'~bootstrap/scss/mixins',
+'~bootstrap/scss/print',
+'~bootstrap/scss/reboot',
+'~bootstrap/scss/type';

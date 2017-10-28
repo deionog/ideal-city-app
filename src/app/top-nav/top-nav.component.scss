@@ -1,0 +1,118 @@
+// top-nav scss
+
+.bt-menu {
+    //float: left;
+    line-height: 60px;
+    //padding: 0 23px;
+    text-align: center;
+    min-width: 115px;
+    height: 60px;
+    border-left: 1px solid #E6EAEA;
+    color: #202121;
+    cursor: pointer;
+    //overflow: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+
+    .ico-menu{
+        top: -1px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+}
+
+.button{
+    border: none;
+    &:hover{
+        background-color: #99cc33;
+        cursor: pointer;
+    }
+    &:focus{
+        outline: none;
+    }
+}
+
+.button-large{
+    width: 190px;
+    height: 60px;
+    padding: 0;
+    line-height: 61px;
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: aliceblue;
+}
+.ico-menu {
+    position: relative;
+    display: inline-block;
+    width: 15px;
+    height: 13px;
+
+    .bar:nth-child(1) {
+        top: 0;
+        width: 9px;
+    }
+
+    .bar:nth-child(2) {
+        top: 5px;
+        width: 15px;
+    }
+
+    .bar:nth-child(3) {
+        top: 10px;
+        width: 12px;
+    }
+
+    .bar {
+        position: absolute;
+        height: 3px;
+        background-color: #99cc33;
+        overflow: hidden;
+    }
+
+    .bar:after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: #A6ABAB;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: 1;
+        -webkit-transition: 0.3s;
+        transition: 0.3s
+    }
+
+    .bar:nth-child(1):after {
+        -webkit-transition-delay: 0.1s;
+        transition-delay: 0.1s
+    }
+
+    bar:nth-child(2):after {
+        -webkit-transition-delay: 0.2s;
+        transition-delay: 0.2s
+    }
+
+    .bar:nth-child(3):after {
+        -webkit-transition-delay: 0.3s;
+        transition-delay: 0.3s
+    }
+}
+
+.bt-menu span {
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.bt-menu:hover span {
+    color: #9acd32
+}
+
+.bt-menu:hover .ico-menu .bar:after {
+    left: 0
+}
+
+.dropdown-item{
+    text-align: left;
+}

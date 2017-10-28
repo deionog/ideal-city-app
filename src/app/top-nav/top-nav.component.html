@@ -1,0 +1,14 @@
+<div class="bt-menu" (click)="toggleCollapse()" (mouseleave)="toggleCollapse(false)">
+  <div class="ico-menu">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <span>Menu</span>
+
+  <div class="collapse show" [@collapse]="collapse">
+      <a class="dropdown-item" href="#">About</a>
+      <a class="dropdown-item" href="#">Support</a>
+      <a class="dropdown-item" href="#">Login</a>
+  </div>
+</div>

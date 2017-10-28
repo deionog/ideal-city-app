@@ -3,7 +3,8 @@
 .bt-menu {
     //float: left;
     line-height: 60px;
-    padding: 0 23px;
+    //padding: 0 23px;
+    text-align: center;
     min-width: 115px;
     height: 60px;
     border-left: 1px solid #E6EAEA;
@@ -113,5 +114,5 @@
 }
 
 .dropdown-item{
-    padding: 0;
+    text-align: left;
 }

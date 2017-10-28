@@ -1,14 +1,18 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
+import { TopNavComponent } from './top-nav/top-nav.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        HeaderComponent
+        HeaderComponent,
+        TopNavComponent
       ],
+      imports:[BrowserAnimationsModule]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

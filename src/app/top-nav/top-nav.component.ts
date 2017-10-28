@@ -29,20 +29,14 @@ export class TopNavComponent implements OnInit {
   ngOnInit() {
   }
 
-  //show:boolean = false;
   collapse:string = "closed";
 
-  toggleCollapse(state:boolean){
-    //this.show = !this.show
-    if(state == null){
+  toggleCollapse(show?:boolean){
+    if(show == null){
     this.collapse = this.collapse == "open" ? "closed" : "open";
     } else {
-      this.collapse = state ? "open" : "closed";
+      this.collapse = show ? "open" : "closed";
     }
-  }
-
-  closeMenu(){
-    this.collapse = "closed";
   }
 
 }

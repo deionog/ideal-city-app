@@ -90,7 +90,7 @@
         transition-delay: 0.1s
     }
 
-    bar:nth-child(2):after {
+    .bar:nth-child(2):after {
         -webkit-transition-delay: 0.2s;
         transition-delay: 0.2s
     }

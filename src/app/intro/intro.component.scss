@@ -1,0 +1,63 @@
+// Intro scss
+@import '~sass/variables';
+
+h1 {
+    //text-align: center;
+    //font-family: $h1;
+    font-size: 38px;
+    //text-shadow: 4px 4px 4px #aaa;
+    color: $white;
+    margin: 0 0 20px 0;
+  }
+
+  p {
+    margin: 0;
+    //text-align: center;
+    color: $white;
+  }
+
+  .img-cont {
+    text-align: center;
+  }
+
+  #wrap {
+    min-height: 100%;
+    height: auto !important;
+    margin: 0 auto -4em;
+  }
+
+  .intro {
+    float: right;
+    width: 400px;
+
+    ul {
+        padding: inherit;
+    }
+    li {
+        list-style: circle;
+        color: $white;
+    }
+  }
+
+  .img-holder .col-md-4{
+    text-align: center;
+  }
+
+  .jumbotron{
+      background: url("../../assets/nyc-bubble.png") no-repeat;
+      background-size: cover;
+      background-position: center;
+      min-height: 400px;
+      max-width: 100%;
+      border-radius: 0;
+  }
+
+  .btn-start {
+      background-color: $yellowGreen;
+      border-color: $white;
+
+      &:hover{
+          background-color: $lightGrey;
+          color: $yellowGreen;
+      }
+  }

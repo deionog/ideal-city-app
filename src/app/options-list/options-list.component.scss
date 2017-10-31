@@ -1,0 +1,87 @@
+// Options-list scss
+@import '~sass/variables';
+
+.data-options{
+    //background: #e6eaea;
+    //width: 75%;
+    //margin: 0 auto;
+    //border-radius: 0 0 15px 15px;
+    //border: 1px solid #eee;
+
+    h4 {
+        //text-align: center;
+        color: $white;
+        padding: 20px;
+        background-color: $yellowGreen;
+    }
+}
+
+.selectAll-link {
+    background: none;
+    border: none;
+    color: blue;
+    text-decoration: underline;
+    font-size: 12px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.factors {
+    margin: 0 0 2em 0;
+    list-style: none;
+    padding: 0;
+    width: 15em;
+
+    li {
+        cursor: pointer;
+        position: relative;
+        left: 0;
+        background-color: #eeeeee;
+        margin-left: .5em;
+        margin-bottom: 4px;
+        border-radius: 4px;
+        font-family: sans-serif;
+
+        &:hover {
+            color: #607D8B;
+            background-color: #dddddd;
+            left: .1em;
+        }
+    }
+
+    .text {
+        position: relative;
+        top: -3px;
+    }
+
+    .badge {
+        display: inline-block;
+        font-size: small;
+        color: $white;
+        padding: 0.8em 0.7em 0 0.7em;
+        background-color: #607D8B;
+        line-height: 1em;
+        left: -1px;
+        top: -4px;
+        min-width: 34px;
+        height: 30px;
+        margin-right: .8em;
+        border-radius: 4px 0 0 4px;
+    }
+}
+
+.selected {
+    background-color: #CFD8DC !important;
+    color: white;
+
+    &:hover {
+        background-color: #BBD8DC !important;
+        color: $white;
+    }
+}

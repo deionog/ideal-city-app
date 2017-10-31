@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { IntroComponent } from './intro/intro.component';
 import { FooterComponent } from './footer/footer.component';
+import { CityComparisonComponent } from './city-comparison/city-comparison.component';
+import { OptionsListComponent } from './options-list/options-list.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     TopNavComponent,
     IntroComponent,
-    FooterComponent
+    FooterComponent,
+    CityComparisonComponent,
+    OptionsListComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +28,10 @@ import { FooterComponent } from './footer/footer.component';
       {
         path: '',
         component: IntroComponent
+      },
+      {
+        path: 'compare',
+        component: CityComparisonComponent
       }
     ])
   ],

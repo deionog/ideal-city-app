@@ -4,7 +4,12 @@
     <ul class="factors">
 
       <li *ngFor="let factor of factors; index as i" [class.selected]="factor.selected" (click)="toggleSelect(factor)">
-         <span class="badge"><img *ngIf="factor.selected; else dash" src="../../assets/tick.png" height="16px"/></span> {{factor.name}}
+         <span class="badge">
+            <div>
+              <input type="checkbox" name="factor.name" [attr.checked]="factor.selected ? true : null" /><label></label>
+            </div>
+              <!--<img *ngIf="factor.selected; else dash" src="../../assets/tick.png" height="16px"/></span> {{factor.name}}-->
+         </span> {{ factor.name}}
          <ng-template #dash> - </ng-template>
       </li>
     </ul>

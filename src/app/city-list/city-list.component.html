@@ -1,0 +1,9 @@
+<div class="city-selection">
+    <h4>{{title}}</h4>
+    <button class="removeAll-link" (click)="removeAll()">Remove All</button>
+    <ul class="selected-cities">
+      <li *ngFor="let city of selectedCities; index as i">
+         <span class="badge">-</span> {{ city }}
+      </li>
+    </ul>
+</div>

@@ -39,7 +39,6 @@ $darkenColor: darken($activeColor, 20%);
     margin: 0 0 2em 0;
     list-style: none;
     padding: 0;
-    width: 15em;
 
     li {
         cursor: pointer;
@@ -69,11 +68,11 @@ $darkenColor: darken($activeColor, 20%);
         color: $white;
         padding: 0.8em 0.7em 0 0.7em;
         background-color: #607D8B;
-        line-height: 1.9em;
+        line-height: 1em;
         left: -1px;
         top: -4px;
         min-width: 34px;
-        height: 43px;
+        height: 34px;
         margin-right: .8em;
         border-radius: 4px 0 0 4px;
     }

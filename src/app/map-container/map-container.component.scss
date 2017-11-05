@@ -1,0 +1,12 @@
+// Map Container scss
+@import '~sass/variables';
+
+agm-map {
+    height: 300px;
+}
+
+.form-group {
+    background: $yellowGreen;
+    padding: 15px;
+    margin-bottom: 1px
+}

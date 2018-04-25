@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Headers, Http } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -8,15 +8,15 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class ApiService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  private setHeaders() : Headers {
+  private setHeaders() : HttpHeaders {
     let headersConfig = {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     };
 
-    return new Headers(headersConfig);
+    return new HttpHeaders(headersConfig);
   }
 
   private formatErrors(error : any) {

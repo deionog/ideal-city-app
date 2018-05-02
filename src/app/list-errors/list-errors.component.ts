@@ -6,9 +6,7 @@ import { Errors } from '../models';
   templateUrl: './list-errors.component.html',
   styleUrls: ['./list-errors.component.scss']
 })
-export class ListErrorsComponent implements OnInit {
-
-  constructor() { }
+export class ListErrorsComponent {
 
   formattedErrors: Array<string> = [];
 
@@ -24,8 +22,5 @@ export class ListErrorsComponent implements OnInit {
   };
 
   get errorList() { return this.formattedErrors; }
-
-  ngOnInit() {
-  }
 
 }

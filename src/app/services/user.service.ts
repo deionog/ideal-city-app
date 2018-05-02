@@ -8,6 +8,7 @@ import 'rxjs/add/operator/catch';
 
 import { User } from '../models/index';
 import { ApiService } from './api.service';
+import { JwtService } from '../shared/jwt.service';
 
 @Injectable()
 export class UserService {
@@ -16,9 +17,27 @@ export class UserService {
   public currentUser = this.currentUserSubject.asObservable().distinctUntilChanged();
 
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
-  private isAuthenticated = this.isAuthenticatedSubject.asObservable();
+  public isAuthenticated = this.isAuthenticatedSubject.asObservable();
 
-    constructor(private apiService: ApiService, private http: HttpClient) { }
+    constructor(private apiService: ApiService,
+        private http: HttpClient,
+        private jwtService: JwtService) { }
+
+    // Verify JWT in localstorage with server & load user's info.
+    // This runs once on application startup.
+    populate() {
+        // If JWT detected, attempt to get & store user's info
+        if (this.jwtService.getToken()) {
+        this.apiService.get('/user')
+        .subscribe(
+            data => this.setAuth(data.user),
+            err => this.purgeAuth()
+        );
+        } else {
+        // Remove any potential remnants of previous auth states
+        this.purgeAuth();
+        }
+    }
 
     setAuth(user: User){
         this.currentUserSubject.next(user);
@@ -34,28 +53,28 @@ export class UserService {
             });
     }
 
-    getCurrentUser(){
+    purgeAuth() {
+        // Remove JWT from localstorage
+        this.jwtService.destroyToken();
+        // Set current user to an empty object
+        this.currentUserSubject.next(new User());
+        // Set auth status to false
+        this.isAuthenticatedSubject.next(false);
+    }
+
+    getCurrentUser(): User {
         return this.currentUserSubject.value;
     }
 
-    getAll() {
-        return this.http.get<User[]>('/api/users');
-    }
-
-    getById(id: number) {
-        return this.http.get('/api/users/' + id);
-    }
-
-    create(user: User) {
-        return this.http.post('/api/users', user);
-    }
-
-    update(user: User) {
-        return this.http.put('/api/user/' + user.id, user);
-    }
-
-    delete(id: number) {
-        return this.http.delete('/api/users/' + id);
+    // Update the user on the server (email, pass, etc)
+    update(user): Observable<User> {
+        return this.apiService
+        .put('/user', { user })
+        .map(data => {
+        // Update the currentUser observable
+        this.currentUserSubject.next(data.user);
+        return data.user;
+        });
     }
 
 }

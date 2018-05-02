@@ -14,7 +14,9 @@ import { FooterComponent } from './footer/footer.component';
 //import { LoginComponent } from './login/login.component';
 //import { RegisterComponent } from './register/register.component';
 import { AuthComponent } from './auth/auth.component';
+import { NoAuthGuard } from './auth/no-auth-guard.service';
 import { ApiService, UserService } from './services';
+import { JwtService } from './shared/jwt.service';
 import { ListErrorsComponent } from './list-errors/list-errors.component';
 
 @NgModule({
@@ -24,8 +26,6 @@ import { ListErrorsComponent } from './list-errors/list-errors.component';
     TopNavComponent,
     IntroComponent,
     FooterComponent,
-    //LoginComponent,
-    //RegisterComponent,
     AuthComponent,
     ListErrorsComponent
   ],
@@ -42,19 +42,21 @@ import { ListErrorsComponent } from './list-errors/list-errors.component';
       },
       {
         path: 'login',
-        component: AuthComponent
-        //canActivate: [AuthguardService]
+        component: AuthComponent,
+        canActivate: [NoAuthGuard]
       },
       {
         path: 'register',
-        component: AuthComponent
-        //canActivate: [AuthguardService]
+        component: AuthComponent,
+        canActivate: [NoAuthGuard]
       }
     ])
   ],
   providers: [
     ApiService,
-    UserService
+    UserService,
+    NoAuthGuard,
+    JwtService
   ],
   bootstrap: [AppComponent]
 })

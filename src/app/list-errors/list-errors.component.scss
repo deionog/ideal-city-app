@@ -1,0 +1,9 @@
+.error-messages{
+    color: red;
+    font-weight: bold;
+    margin: 0;
+
+    li::before {
+        content: '*';
+    }
+}

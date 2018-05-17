@@ -40,6 +40,7 @@ export class UserService {
     }
 
     setAuth(user: User){
+        this.jwtService.saveToken(user.token);
         this.currentUserSubject.next(user);
         this.isAuthenticatedSubject.next(true);
     }

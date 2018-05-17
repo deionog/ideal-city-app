@@ -25,13 +25,12 @@ export class ApiService {
   }
 
   private formatErrors(error : any) {
-    return Observable.throw(error.json());
+    return Observable.throw(error.error);
   }
 
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
     return this.http.get(`${environment.api_url}${path}`, { headers: this.setHeaders(), params: params })
-    .catch(this.formatErrors)
-    .map((res: Response) => res.json());
+    .catch(this.formatErrors);
   }
 
   put(path: string, body: Object = {}): Observable<any> {
@@ -40,14 +39,12 @@ export class ApiService {
       JSON.stringify(body),
       { headers: this.setHeaders() }
     )
-    .catch(this.formatErrors)
-    .map((res: Response) => res.json());
+    .catch(this.formatErrors);
   }
 
   post(path: string, body: Object = {}): Observable<any> {
     return this.http.post(`${environment.api_url}${path}`, JSON.stringify(body), { headers: this.setHeaders()})
-      .catch(this.formatErrors)
-      .map((res: Response) => res.json());
+      .catch(this.formatErrors);
   }
 
   delete(path): Observable<any> {
@@ -55,8 +52,7 @@ export class ApiService {
       `${environment.api_url}${path}`,
       { headers: this.setHeaders() }
     )
-    .catch(this.formatErrors)
-    .map((res: Response) => res.json());
+    .catch(this.formatErrors);
   }
 
 }

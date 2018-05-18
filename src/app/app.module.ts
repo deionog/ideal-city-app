@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule }   from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+//import { AuthModule } from './auth/auth.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,6 +16,13 @@ import { CityComparisonComponent } from './city-comparison/city-comparison.compo
 import { OptionsListComponent } from './options-list/options-list.component';
 import { CityListComponent } from './city-list/city-list.component';
 import { MapContainerComponent } from './map-container/map-container.component';
+//import { LoginComponent } from './login/login.component';
+//import { RegisterComponent } from './register/register.component';
+import { AuthComponent } from './auth/auth.component';
+import { NoAuthGuard } from './auth/no-auth-guard.service';
+import { ApiService, UserService } from './services';
+import { JwtService } from './shared/jwt.service';
+import { ListErrorsComponent } from './list-errors/list-errors.component';
 
 @NgModule({
   declarations: [
@@ -25,11 +34,15 @@ import { MapContainerComponent } from './map-container/map-container.component';
     CityComparisonComponent,
     OptionsListComponent,
     CityListComponent,
-    MapContainerComponent
+    MapContainerComponent,
+    AuthComponent,
+    ListErrorsComponent
   ],
   imports: [
+    //AuthModule,
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
       {
@@ -40,6 +53,16 @@ import { MapContainerComponent } from './map-container/map-container.component';
       {
         path: 'compare',
         component: CityComparisonComponent
+      },
+      {
+        path: 'login',
+        component: AuthComponent,
+        canActivate: [NoAuthGuard]
+      },
+      {
+        path: 'register',
+        component: AuthComponent,
+        canActivate: [NoAuthGuard]
       }
     ]),
     AgmCoreModule.forRoot({
@@ -47,7 +70,12 @@ import { MapContainerComponent } from './map-container/map-container.component';
       libraries: ["places"]
     })
   ],
-  providers: [],
+  providers: [
+    ApiService,
+    UserService,
+    NoAuthGuard,
+    JwtService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

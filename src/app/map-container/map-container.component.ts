@@ -14,6 +14,8 @@ export class MapContainerComponent implements OnInit {
   lng: number = -95.7129;
   zoom: number = 4;
   searchControl: FormControl;
+  cityName: String = "";
+  cities: Array<String> = new Array<String>();
 
   @ViewChild("search")
   searchElementRef: ElementRef;
@@ -47,12 +49,30 @@ export class MapContainerComponent implements OnInit {
           this.lat = place.geometry.location.lat();
           this.lng = place.geometry.location.lng();
           this.zoom = 12;
+
+          this.cityName = place.address_components[0].short_name + ", " +
+          place.address_components[2].short_name;
           console.log(this.lat);
           console.log(this.lng);
           console.log(this.zoom);
+          console.log(place);
         });
       });
     });
+  }
+
+  addCity(city) {
+    console.log(city);
+    this.cities.push(city);
+  }
+
+  onNotify(ind: number){
+    console.log("Index to delete: " + ind);
+    if(ind == -1){
+      this.cities = [];
+    } else{
+    this.cities.splice(ind, 1);
+    }
   }
 
   /**

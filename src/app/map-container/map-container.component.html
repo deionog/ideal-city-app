@@ -6,9 +6,15 @@
     <!-- this creates a google map on the page with the given lat/lng from -->
     <!-- the component as the initial center of the map: -->
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      <agm-marker [latitude]="lat" [longitude]="lng">
+        <agm-info-window [disableAutoPan]="true">
+          <strong>{{cityName}}</strong>
+          <hr>
+          <button class="btn btn-success btn-sm" (click)="addCity(cityName)">Add City</button>
+        </agm-info-window>
+      </agm-marker>
     </agm-map>
   </div>
 
-  <div class="col"><app-city-list></app-city-list></div>
+  <div class="col"><app-city-list (notify)='onNotify($event)' [selectedCities]="cities"></app-city-list></div>
 </div>

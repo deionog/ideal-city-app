@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-city-list',
@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class CityListComponent implements OnInit {
 
   title = "Cities";
-  selectedCities: Array<string>;
+  @Input() selectedCities: Array<string>;
+  @Output() notify: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() {
     this.selectedCities = ["City 1", "City 3", "City 5"]
@@ -18,7 +19,13 @@ export class CityListComponent implements OnInit {
   }
 
   removeAll() {
-    this.selectedCities = []
+    this.selectedCities = [];
+    this.notify.emit(-1);
+  }
+
+  removeCity(index){
+    //this.selectedCities.splice(index, 1);
+    this.notify.emit(index);
   }
 
 }

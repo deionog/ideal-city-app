@@ -1,9 +1,11 @@
 <div class="city-selection">
     <h4>{{title}}</h4>
-    <button class="removeAll-link" (click)="removeAll()">Remove All</button>
+    <button *ngIf="selectedCities.length > 0" class="removeAll-link" (click)="removeAll()">Remove All</button>
     <ul class="selected-cities">
       <li *ngFor="let city of selectedCities; index as i">
-         <span class="badge">-</span> {{ city }}
+        <button type="button" class="close" aria-label="Close" (click)="removeCity(i)">
+          <span aria-hidden="true">&times;</span>
+        </button> {{ city }}
       </li>
     </ul>
 </div>

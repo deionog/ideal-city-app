@@ -5,7 +5,6 @@ import { RouterModule }   from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-//import { AuthModule } from './auth/auth.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,13 +15,14 @@ import { CityComparisonComponent } from './city-comparison/city-comparison.compo
 import { OptionsListComponent } from './options-list/options-list.component';
 import { CityListComponent } from './city-list/city-list.component';
 import { MapContainerComponent } from './map-container/map-container.component';
-//import { LoginComponent } from './login/login.component';
-//import { RegisterComponent } from './register/register.component';
 import { AuthComponent } from './auth/auth.component';
-import { NoAuthGuard } from './auth/no-auth-guard.service';
-import { ApiService, UserService } from './services';
-import { JwtService } from './shared/jwt.service';
 import { ListErrorsComponent } from './list-errors/list-errors.component';
+import { PreferenceSelComponent } from './preference-sel/preference-sel.component';
+
+import { NoAuthGuard } from './auth/no-auth-guard.service';
+import { ApiService, UserService, UserPreferencesService } from './services';
+import { JwtService } from './shared/jwt.service';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { ListErrorsComponent } from './list-errors/list-errors.component';
     CityListComponent,
     MapContainerComponent,
     AuthComponent,
-    ListErrorsComponent
+    ListErrorsComponent,
+    PreferenceSelComponent
   ],
   imports: [
     //AuthModule,
@@ -53,6 +54,10 @@ import { ListErrorsComponent } from './list-errors/list-errors.component';
       {
         path: 'compare',
         component: CityComparisonComponent
+      },
+      {
+        path: 'factors',
+        component: PreferenceSelComponent
       },
       {
         path: 'login',
@@ -73,6 +78,7 @@ import { ListErrorsComponent } from './list-errors/list-errors.component';
   providers: [
     ApiService,
     UserService,
+    UserPreferencesService,
     NoAuthGuard,
     JwtService
   ],

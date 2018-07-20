@@ -64,6 +64,7 @@ export class MapContainerComponent implements OnInit {
   addCity(city) {
     console.log(city);
     this.cities.push(city);
+    sessionStorage.setItem('cities', this.cities.join('-vs-'));
   }
 
   onNotify(ind: number){
@@ -73,6 +74,7 @@ export class MapContainerComponent implements OnInit {
     } else{
     this.cities.splice(ind, 1);
     }
+    sessionStorage.setItem('cities', this.cities.join('-vs-'));
   }
 
   /**

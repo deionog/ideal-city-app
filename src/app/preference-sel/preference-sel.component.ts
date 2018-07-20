@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserPreferences } from '../models';
 import { UserPreferencesService } from '../services'
 
@@ -10,6 +10,8 @@ import { UserPreferencesService } from '../services'
 export class PreferenceSelComponent implements OnInit {
 
   preferences: Array<UserPreferences>;
+  @Output() notify: EventEmitter<UserPreferences[]> = new EventEmitter<UserPreferences[]>();
+
   constructor(private userPreferenceService: UserPreferencesService) {
     this.preferences = [];
   }
@@ -27,6 +29,10 @@ export class PreferenceSelComponent implements OnInit {
     this.preferences.forEach(function (preference) {
       preference.selected = true;
     })
+  }
+
+  nextStep() {
+    sessionStorage.setItem("preferences", this.preferences.toString() );
   }
 
 }

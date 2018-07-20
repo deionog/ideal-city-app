@@ -8,18 +8,31 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class CityListComponent implements OnInit {
 
   title = "Cities";
-  @Input() selectedCities: Array<string>;
+  private _selectedCities: Array<String>;
+  //@Input() selectedCities: Array<string>;
   @Output() notify: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() {
-    this.selectedCities = ["City 1", "City 3", "City 5"]
+    this._selectedCities = [];
    }
 
   ngOnInit() {
   }
 
+  @Input()
+  set selectedCities(selectedCities: Array<String>){
+    this._selectedCities = selectedCities;
+    console.log(selectedCities);
+    console.log(this._selectedCities);
+    sessionStorage.setItem('cities', selectedCities.join('-vs-'));
+  }
+
+  get selectedCities(){
+    return this._selectedCities;
+  }
+
   removeAll() {
-    this.selectedCities = [];
+    this._selectedCities = [];
     this.notify.emit(-1);
   }
 

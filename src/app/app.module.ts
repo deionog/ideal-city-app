@@ -20,8 +20,9 @@ import { ListErrorsComponent } from './list-errors/list-errors.component';
 import { PreferenceSelComponent } from './preference-sel/preference-sel.component';
 
 import { NoAuthGuard } from './auth/no-auth-guard.service';
-import { ApiService, UserService, UserPreferencesService } from './services';
+import { ApiService, UserService, UserPreferencesService, CitydataService } from './services';
 import { JwtService } from './shared/jwt.service';
+import { CityDataComponent } from './city-data/city-data.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { JwtService } from './shared/jwt.service';
     MapContainerComponent,
     AuthComponent,
     ListErrorsComponent,
-    PreferenceSelComponent
+    PreferenceSelComponent,
+    CityDataComponent
   ],
   imports: [
     //AuthModule,
@@ -50,6 +52,10 @@ import { JwtService } from './shared/jwt.service';
         path: '',
         pathMatch: 'full',
         component: IntroComponent
+      },
+      {
+        path: 'citydata',
+        component: CityDataComponent
       },
       {
         path: 'compare',
@@ -77,6 +83,7 @@ import { JwtService } from './shared/jwt.service';
   ],
   providers: [
     ApiService,
+    CitydataService,
     UserService,
     UserPreferencesService,
     NoAuthGuard,

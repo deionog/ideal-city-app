@@ -1,3 +1,9 @@
-<p>
-  city-data works!
-</p>
+<div class="container">
+  <ul class="city-results">
+    <li class="col-md-4 text-center" *ngFor="let result of cityResults">
+      <h2>{{result.title}}</h2>
+      <p><img src="{{result.subpods[0].img.src}}" alt="{{result.subpods[0].img.alt}}"></p>
+    </li>
+  </ul>
+
+</div>

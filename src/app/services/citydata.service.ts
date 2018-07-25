@@ -20,7 +20,7 @@ export class CitydataService {
             //   pref.selected = pref.isDefault;
             // });
           }
-          return data.preferences;
+          return data.cityData;
         });
     }
 

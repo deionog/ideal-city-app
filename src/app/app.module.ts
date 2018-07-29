@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule }   from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,6 +23,8 @@ import { NoAuthGuard } from './auth/no-auth-guard.service';
 import { ApiService, UserService, UserPreferencesService, CitydataService } from './services';
 import { JwtService } from './shared/jwt.service';
 import { CityDataComponent } from './city-data/city-data.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AuthguardService } from './services/authguard.service';
 
 
 @NgModule({
@@ -39,10 +41,10 @@ import { CityDataComponent } from './city-data/city-data.component';
     AuthComponent,
     ListErrorsComponent,
     PreferenceSelComponent,
-    CityDataComponent
+    CityDataComponent,
+    ProfileComponent
   ],
   imports: [
-    //AuthModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -67,13 +69,16 @@ import { CityDataComponent } from './city-data/city-data.component';
       },
       {
         path: 'login',
-        component: AuthComponent,
-        canActivate: [NoAuthGuard]
+        component: AuthComponent
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        canActivate: [AuthguardService]
       },
       {
         path: 'register',
-        component: AuthComponent,
-        canActivate: [NoAuthGuard]
+        component: AuthComponent
       }
     ]),
     AgmCoreModule.forRoot({
@@ -83,6 +88,7 @@ import { CityDataComponent } from './city-data/city-data.component';
   ],
   providers: [
     ApiService,
+    AuthguardService,
     CitydataService,
     UserService,
     UserPreferencesService,

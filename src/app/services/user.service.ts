@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import 'rxjs/add/operator/map';
@@ -16,7 +16,7 @@ export class UserService {
   private currentUserSubject = new BehaviorSubject<User>(new User());
   public currentUser = this.currentUserSubject.asObservable().distinctUntilChanged();
 
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
 
     constructor(private apiService: ApiService,
@@ -43,6 +43,10 @@ export class UserService {
         this.jwtService.saveToken(user.token);
         this.currentUserSubject.next(user);
         this.isAuthenticatedSubject.next(true);
+        console.log(user);
+        this.isAuthenticated.take(1).subscribe(data=>{
+            console.log("setAuth: " + data);
+        })
     }
 
     attemptAuth(type, credentials) : Observable<User> {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger,state,style,animate,transition } from '@angular/animations';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+import { UserService } from '../services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-top-nav',
@@ -25,12 +27,18 @@ import { RouterLink } from '@angular/router';
 })
 export class TopNavComponent implements OnInit {
 
-  constructor() { }
+  isLoggedIn: Observable<boolean>;
+  collapse:string = "closed";
+
+  constructor(private router: Router, private userService: UserService) {
+    console.log("enter constructor");
+    this.isLoggedIn = this.userService.isAuthenticated.take(1);
+    this.userService.isAuthenticated.take(1).subscribe(data=>console.log(data));
+   }
 
   ngOnInit() {
+    console.log(this.userService.getCurrentUser());
   }
-
-  collapse:string = "closed";
 
   toggleCollapse(show?:boolean){
     if(show == null){
@@ -39,5 +47,11 @@ export class TopNavComponent implements OnInit {
       this.collapse = show ? "open" : "closed";
     }
   }
+
+  logout(){
+    this.userService.purgeAuth();
+    this.router.navigateByUrl('/');
+  }
+
 
 }

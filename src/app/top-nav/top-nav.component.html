@@ -7,9 +7,11 @@
   <span>Menu</span>
 
   <div class="collapse show" [@collapse]="collapse">
-      <a class="dropdown-item" href="#">About</a>
-      <a class="dropdown-item" href="#">Support</a>
-      <a class="dropdown-item" routerLink="/login" routerLinkActive="active">Log In</a>
-      <a class="dropdown-item" routerLink="/register" routerLinkActive="active">Sign Up</a>
+    <a class="dropdown-item" routerLink="/profile" routerLinkActive="active" *ngIf="(isLoggedIn | async)">My Profile</a>
+    <a class="dropdown-item" href="#">About</a>
+    <a class="dropdown-item" href="#">Support</a>
+    <a class="dropdown-item" routerLink="/login" routerLinkActive="active" *ngIf="!(isLoggedIn | async)">Log In</a>
+    <a class="dropdown-item" routerLink="/register" routerLinkActive="active" *ngIf="!(isLoggedIn | async)">Sign Up</a>
+    <a class="dropdown-item" (click)="logout()" *ngIf="(isLoggedIn | async)">Logout</a>
   </div>
 </div>

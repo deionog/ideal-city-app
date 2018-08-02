@@ -82,4 +82,16 @@ export class UserService {
         });
     }
 
+    // Reset the auth back to logged in user
+    refreshAuth(user){
+        // let currentUser: User = new User();
+        // currentUser.setId(user.id);
+        // currentUser.setUsername(user.username);
+        // currentUser.setFirstName(user.firstName);
+        // currentUser.setExp(user.exp);
+        user = JSON.parse(user);
+        this.currentUserSubject.next(user);
+        this.isAuthenticatedSubject.next(true);
+    }
+
 }

@@ -12,16 +12,25 @@ export class AuthguardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
     const token = this.jwtService.getToken();
+    const user = this.userService.getCurrentUser();
+    let isLoggedIn = false;
     let payload;
+
     if(token){
       payload = token.split('.')[1];
       payload = window.atob(payload);
-      console.log(JSON.parse(payload));
-      return true;
+      console.log(payload);
+      isLoggedIn = true;
+    }
+    //  User subject may get lost on refresh so need to reset auth
+    if(!user.id && token){
+      this.userService.refreshAuth(payload);
+      isLoggedIn = true;
     }else{
       this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
-      return false;
+      isLoggedIn = false;
     }
+    return isLoggedIn;
     //console.log(this.userService.getCurrentUser());
     //return this.userService.isAuthenticated.take(1).map(isAuth=> isAuth);
     // if (localStorage.getItem('currentUser')) {

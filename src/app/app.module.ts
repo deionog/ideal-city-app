@@ -20,7 +20,7 @@ import { ListErrorsComponent } from './list-errors/list-errors.component';
 import { PreferenceSelComponent } from './preference-sel/preference-sel.component';
 
 import { NoAuthGuard } from './auth/no-auth-guard.service';
-import { ApiService, UserService, UserPreferencesService, CitydataService } from './services';
+import { ApiService, UserService, UserPreferencesService, CitydataService, CityFavoritesService, MyPreferencesService } from './services';
 import { JwtService } from './shared/jwt.service';
 import { CityDataComponent } from './city-data/city-data.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -79,6 +79,9 @@ import { AuthguardService } from './services/authguard.service';
       {
         path: 'register',
         component: AuthComponent
+      },{
+        path: '**',
+        redirectTo: ''
       }
     ]),
     AgmCoreModule.forRoot({
@@ -93,7 +96,9 @@ import { AuthguardService } from './services/authguard.service';
     UserService,
     UserPreferencesService,
     NoAuthGuard,
-    JwtService
+    JwtService,
+    CityFavoritesService,
+    MyPreferencesService
   ],
   bootstrap: [AppComponent]
 })

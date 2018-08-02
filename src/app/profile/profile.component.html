@@ -1,10 +1,37 @@
-<div class="form-horizontal">
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Hello</label>
-    <p class="form-control-static">{{ details?.name }}</p>
+<div class="profileContent">
+  <div class="dashboard container row">
+    <label class="col-sm-9 control-label">Hello {{ details.firstName }}</label>
+    <div class="col-sm-2">
+      <p class="dashboard-count">{{ numOfCities }}</p>
+      <label class="count-lbl">Favorite Cities</label>
+    </div>
   </div>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Email</label>
-    <p class="form-control-static">{{ details?.username }}</p>
+
+ <div id="profileContent" class="dashboard container">
+    <ul class="tabs">
+      <li class="active">
+        <a href="" class="tab-lbl" data-toggle="tab">Favorite Cities</a>
+      </li>
+      <li>
+        <a href="" class="tab-lbl" data-toggle="tab">My Preferences</a>
+      </li>
+    </ul>
+    <div class="tab-content clearfix">
+      <div class="tab-pane active" data-index="0">
+        <ul>
+          <li *ngFor="let city of myCities; let i = index">{{ city.city }}
+            <button class="btn" (click)="removeCity(city,index)">Delete</button>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-pane" data-index="1">
+        <ul>
+          <li *ngFor="let pref of myPreferences">{{ pref.name }}
+            <input type="checkbox" />
+          </li>
+          <button class="btn" (click)="updatePreferences()">Save Changes</button>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>

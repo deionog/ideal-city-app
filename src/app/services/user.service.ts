@@ -43,10 +43,10 @@ export class UserService {
         this.jwtService.saveToken(user.token);
         this.currentUserSubject.next(user);
         this.isAuthenticatedSubject.next(true);
-        console.log(user);
-        this.isAuthenticated.take(1).subscribe(data=>{
-            console.log("setAuth: " + data);
-        })
+        //console.log(user);
+        // this.isAuthenticated.take(1).subscribe(data=>{
+        //     console.log("setAuth: " + data);
+        // })
     }
 
     attemptAuth(type, credentials) : Observable<User> {

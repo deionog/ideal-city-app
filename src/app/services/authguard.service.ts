@@ -19,7 +19,7 @@ export class AuthguardService implements CanActivate {
     if(token){
       payload = token.split('.')[1];
       payload = window.atob(payload);
-      console.log(payload);
+      //console.log(payload);
       isLoggedIn = true;
     }
     //  User subject may get lost on refresh so need to reset auth

@@ -1,19 +1,22 @@
 <div class="user-prefs">
-    <h4>Select what matter to you.</h4>
+  <h4>Select what matters to you.</h4>
+  <div class="container">
     <button class="selectAll-link" (click)="selectAll()">Select All</button>
     <ul class="preferences">
-
       <li *ngFor="let preference of preferences; index as i" [class.selected]="preference.selected" (click)="toggleSelect(preference)">
-         <span class="badge">
-            <div>
-              <input type="checkbox" name="preference.name" [attr.checked]="preference.selected ? true : null" /><label></label>
-            </div>
-              <!--<img *ngIf="factor.selected; else dash" src="../../assets/tick.png" height="16px"/></span> {{factor.name}}-->
-         </span> {{ preference.name}}
-         <ng-template #dash> - </ng-template>
+        <span class="badge">
+          <div>
+            <input type="checkbox" name="preference.name" [attr.checked]="preference.selected ? true : null" />
+            <label></label>
+          </div>
+          <!--<img *ngIf="factor.selected; else dash" src="../../assets/tick.png" height="16px"/></span> {{factor.name}}-->
+        </span> {{ preference.name}}
+        <ng-template #dash> - </ng-template>
       </li>
     </ul>
     <span id="starter-link">
-        <a routerLink="/compare" routerLinkActive="active" (click)="nextStep()" class="btn btn-primary btn-lg btn-start" role="button">Continue -></a>
-    </span><br/>
+      <a routerLink="/compare" routerLinkActive="active" (click)="nextStep()" class="btn btn-primary btn-lg btn-success" role="button">Continue</a>
+    </span>
+    <br/>
+  </div>
 </div>

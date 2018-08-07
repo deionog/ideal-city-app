@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   myCities: Array<any> = [];
   myPreferences: UserPreferences[] = [];
   numOfCities: number = 0;
-  firstName: string = "Dummy";
+  firstName: string = "";
 
   constructor(private userService: UserService,
     private cityFavService: CityFavoritesService,
